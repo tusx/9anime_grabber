@@ -1,7 +1,7 @@
 # 9anime_grabber
 
 Note:
-- This is a Selenium base 9anime link grabber.
+- This is a Selenium based 9anime link grabber.
 - Currently grabs all episode links for given link, Max grab is 1 to 150 episodes.
 - This also uses Ublock-origin to function properly.
 - This is designed with firefox browser in mind.
