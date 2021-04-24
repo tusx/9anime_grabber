@@ -1,6 +1,6 @@
 # 9anime_grabber
 
-Note:
+About:
 - This is a Selenium based 9anime link grabber.
 - Currently grabs all episode links for given link, Max grab is 1 to 150 episodes.
 - This also uses Ublock-origin to function properly.
@@ -13,6 +13,8 @@ Requirements:
 ```python
 pip install selenium
 ```
+Note: Download below files according to your OS and architecture. for ublock just download the firefox .xpi file.
+
 3. Firefox Webdriver (geckodriver), which can be download from [here](https://github.com/mozilla/geckodriver/releases). Download the latest for your system.
 4. Download the Ublock-origin .xpi file for Firefox from [here](https://github.com/gorhill/uBlock/releases).
 
