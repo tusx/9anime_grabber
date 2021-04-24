@@ -84,7 +84,7 @@ for ep in episo:
     for s_ep in single_ep:
         s_ep.click()
         #wait for iframe tag to appear
-        time.sleep(5)
+        time.sleep(delay)
         #lets get those link real quick
         link = get_link()
         #write link
