@@ -82,7 +82,7 @@ def start():
         count +=1
         #making episode name
         episodeNumber = str(count)
-        episodeName = downloadFolder+'E'+episodeNumber+".mp4"
+        episodeName = downloadFolder+'-E'+episodeNumber+".mp4"
 
         # Full Download path
         fullDownloadPath = folder_path+'/'+episodeName
