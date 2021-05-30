@@ -10,7 +10,9 @@ import time
 import requests
 import threading
 
-filename = 'pokemon-the-series-xyz-dub.txt'
+max_threads = 12
+
+filename = 'pokemon-the-series-sun-moon-dub.txt'
 extension_path = '/home/tusx/code/9anime_grabber-main/uBlock0_1.35.0.firefox.xpi'
 download_path = '/media/tusx/nam/downloads'
 
@@ -22,6 +24,8 @@ print("installing ublock origin")
 browser.install_addon(extension_path, temporary=True)
 
 
+
+thread_num = 0
 
 
 
@@ -48,7 +52,13 @@ def getdownlink(link):
         
     return link
 
+def update_thread(num):
+    global thread_num
+    thread_num = num
+
 def download(url,path):
+    total_thread = thread_num + 1
+    update_thread(total_thread)
     r = requests.get(url, stream=True)
     with open(path, 'wb') as f:
         total_length = int(r.headers.get('content-length'))
@@ -56,6 +66,9 @@ def download(url,path):
             if chunk:
                 f.write(chunk)
                 f.flush()
+    
+    new_thread_num = thread_num - 1
+    update_thread(new_thread_num)
 
 def get_links(name):
     file1 = open(name,'r')
@@ -65,6 +78,14 @@ def get_links(name):
 
     return link_list
 
+def download_thread(url,path):
+    if thread_num < max_threads:
+        x = threading.Thread(target=download, args=(url,path))
+        x.start()
+    else:
+        print(thread_num," threads reached, now waiting to be freed")
+        time.sleep(30)
+        download_thread(url,path)
 
 def start():
 
@@ -92,11 +113,13 @@ def start():
 
         # Multi-Thread Downloading 
         print("Downloading :",episodeName)
-        x = threading.Thread(target=download, args=(downLink,fullDownloadPath))
-        x.start()
+        download_thread(downLink,fullDownloadPath)
+        
+        
+        
 
+        
     
-
     browser.close()
 
 
