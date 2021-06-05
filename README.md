@@ -30,4 +30,5 @@ How to use:
 >https://domain.to/watch/pokemon-the-series-xy-dub.j2wn/ep-1
 - when it starts downloading episodes it will automatically create a folder for it.
 - if evrything goes well just sitback and watch it work.
+>Note: if the download location remains the same it will skip downloading already downloaded episoded, if a download fails please delete the partially downloaded file and try again
 
